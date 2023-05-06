@@ -87,12 +87,16 @@ class two extends Phaser.Scene {
             50,
             50,
             "CITY SPEEDSTER",
+            {
+                font: "60px Impact",
+                color: "#FFFFFF",
+            }
         )
 
         this.textObject2 = this.add.text(
             50,
             150,
-            "PLAY"
+            "CLICK TO START"
         )
         this.textObject3 = this.add.text(
             50,
@@ -104,9 +108,38 @@ class two extends Phaser.Scene {
             250,
             "CREDIT"
         )
+
+
+        this.input.on('pointerdown', () => {
+            bang.stop()
+            this.scene.start('cin3')
+        })
     }
 }
 
+
+class three extends Phaser.Scene {
+    constructor(){
+        super('cin3');
+    }
+    create(){
+        this.cameras.main.backgroundColor.setTo(33,33,33)
+        
+        
+        this.textObject5 = this.add.text(
+            250,
+            200,
+            "To drive faster, try collecting\nall fuel power ups.\nThe more fuel you have\nthe longer you can boost for speed."
+        )
+        this.graphics = this.add.graphics();
+        this.graphics.fillStyle(0xff7700, 1);
+        this.graphics.fillRect(250, 300, 300, 50);
+
+        this.graphics1 = this.add.graphics();
+        this.graphics.fillStyle(0x98adff, 1);
+        this.graphics.fillCircle(520, 325, 20);
+    }
+}
 
 
 let config = {
@@ -114,7 +147,7 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [one, two],
+    scene: [three],
 }
 
 let game = new Phaser.Game(config)
