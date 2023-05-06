@@ -3,8 +3,7 @@ class one extends Phaser.Scene {
         super('cin1');
     }
     create() {
-        this.add.text(10,10,"Click to begin.");
-        this.input.on('pointerdown', () => this.scene.start('cin2'))
+        this.cameras.main.backgroundColor.setTo(255,235,152);
     }
 
 }
