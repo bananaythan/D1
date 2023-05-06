@@ -1,4 +1,4 @@
-class title extends Phaser.Scene {
+class one extends Phaser.Scene {
     constructor(){
         super('cin1');
     }
@@ -9,12 +9,22 @@ class title extends Phaser.Scene {
 
 }
 
-class body extends Phaser.Scene {
+class two extends Phaser.Scene {
     constructor(){
         super('cin2');
     }
     create() {
         this.add.text(10,10,"I am scene two.");
+        let circle = this.add.circle(150, 150, 100, 0xff0000);
+        circle.scale = 0;
+        this.add.tween({
+            targets: circle,
+            scale: {from: 0, to: 1},
+            duration: 2000
+        })
+        this.time.delayedCall(3000, () => {
+            this.cameras.main.fadeOut(2000, 0,0,0);
+        })
     }
 }
 
@@ -23,6 +33,6 @@ class body extends Phaser.Scene {
 new Phaser.Game({
     width: 800,
     height: 600,
-    scene: [title, body],
+    scene: [one, two],
 })
 
